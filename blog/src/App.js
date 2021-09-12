@@ -7,6 +7,7 @@ function App() {
   let post = '셔지니와 쳐로리';
   let [글제목, 글제목변경] = useState(['운동화 추천', '셔츠 추천', '모자 추천']);
   let [따봉, 따봉변경] = useState(0);
+  let [modal, modal변경] = useState(false);
 
   const 제목바꾸기 = () => {
     let newArray = [...글제목];
@@ -36,8 +37,25 @@ function App() {
         <hr />
       </div>
 
+      <button onClick={() => { modal변경(!modal) }}>모달창 열고 닫는 버튼</button>
+
+      {
+        modal === true
+          ? <Modal />
+          : null
+      }
+
     </div>
   );
 }
 
+function Modal() {
+  return (
+    <div className="modal">
+      <h2>제목</h2>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
+}
 export default App;
