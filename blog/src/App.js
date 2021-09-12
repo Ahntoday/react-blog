@@ -1,0 +1,43 @@
+/* eslint-disable */
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  let post = '셔지니와 쳐로리';
+  let [글제목, 글제목변경] = useState(['운동화 추천', '셔츠 추천', '모자 추천']);
+  let [따봉, 따봉변경] = useState(0);
+
+  const 제목바꾸기 = () => {
+    let newArray = [...글제목];
+    newArray[0] = '구두 추천';
+    글제목변경(newArray);
+  }
+
+  return (
+    <div className="App">
+      <div className="black-nav">
+        <div style={{ color: 'pink' }}>안오늘의 개발 Blog</div>
+      </div>
+      <div className="list">
+        <h3> {글제목[0]} <span onClick={() => { 따봉변경(따봉 + 1) }}>👍🏻</span> {따봉} </h3>
+        <button onClick={제목바꾸기}>글제목변경</button>
+        <p>9월 12일 발행</p>
+        <hr />
+      </div>
+      <div className="list">
+        <h3> {글제목[1]} </h3>
+        <p>9월 12일 발행</p>
+        <hr />
+      </div>
+      <div className="list">
+        <h3> {글제목[2]} </h3>
+        <p>9월 12일 발행</p>
+        <hr />
+      </div>
+
+    </div>
+  );
+}
+
+export default App;
