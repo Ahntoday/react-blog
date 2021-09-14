@@ -15,6 +15,15 @@ function App() {
     글제목변경(newArray);
   }
 
+  const 반복된UI = () => {
+    let array = [];
+    for (let i = 0; i < 3; i++) {
+      array.push(<div>안녕</div>);
+    }
+
+    return array;
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -45,6 +54,18 @@ function App() {
           : null
       }
 
+      {반복된UI()}
+      {
+        글제목.map((el) => {
+          return (
+            <div className="list">
+              <h3> {el} </h3>
+              <p>9월 12일 발행</p>
+              <hr />
+            </div>
+          )
+        })
+      }
     </div>
   );
 }
