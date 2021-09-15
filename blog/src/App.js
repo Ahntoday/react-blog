@@ -8,7 +8,7 @@ function App() {
   let [글제목, 글제목변경] = useState(['운동화 추천', '셔츠 추천', '모자 추천']);
   let [따봉, 따봉변경] = useState(0);
   let [modal, modal변경] = useState(false);
-
+  let [누른제목넘버, 누른제목넘버변경] = useState(0);
   const 제목바꾸기 = () => {
     let newArray = [...글제목];
     newArray[0] = '구두 추천';
@@ -50,16 +50,16 @@ function App() {
 
       {
         modal === true
-          ? <Modal />
+          ? <Modal 글제목={글제목} 누른제목넘버={누른제목넘버} />
           : null
       }
 
       {반복된UI()}
       {
-        글제목.map((el) => {
+        글제목.map((el, i) => {
           return (
             <div className="list">
-              <h3> {el} </h3>
+              <h3 onClick={() => { 누른제목넘버변경(i) }}> {el} </h3>
               <p>9월 12일 발행</p>
               <hr />
             </div>
@@ -70,10 +70,10 @@ function App() {
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
-      <h2>제목</h2>
+      <h2>{props.글제목[props.누른제목넘버]}</h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
